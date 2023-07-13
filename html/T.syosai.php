@@ -45,11 +45,17 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarsExample05">
-            <form wtx-context="0C9FB6AB-0B58-4B25-A43A-44B7ADC851E5" class="mx-4">
-              <input class="form-control text-center mb-3" type="text" placeholder="キーワードを入力" aria-label="Search" wtx-context="AA84657A-0F9B-4A04-B5FA-D24659B477FD"
-              style="height: 34px;
+        <form id="search" wtx-context="0C9FB6AB-0B58-4B25-A43A-44B7ADC851E5" action="./timeLine.php" class="mx-4" method="get">
+            <div class="input-group">
+              <input class="form-control text-center mb-3" type="search"  name="key" placeholder="キーワードを入力" aria-label="Search" wtx-context="AA84657A-0F9B-4A04-B5FA-D24659B477FD"
+              style="height: 50px;
               border: 3px solid #FFAC4A; 
               box-shadow: none;">
+               <button  type="submit" class="" id="btnstyle" type="button"   style="height: 50px; background-color: #ffac4a; color: #ffffff;">
+                検索 
+                </button>
+                
+                </div>
             </form>
         </div>
     </div>
@@ -108,16 +114,16 @@
         //いいねボタンおされたら
         if(isset($_POST['likeBtn'])){
             //今のURL取得
-            $pageUrl = $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING'];
+            // $pageUrl = $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING'];
             if ($likeFlag == 'true') {
                 //いいねされてれば　削除
                 $daoTshosaiDb->deleteLike($postId,$_SESSION['user_id']);
-                header("Location: $pageUrl");
+                header("Location: likeCheck.php?post_id=$postId");
                 exit();
             }else{
                 //　いいね　追加
                 $daoTshosaiDb->insertLike($postId,$_SESSION['user_id']);            
-                header("Location: $pageUrl");
+                header("Location: likeCheck.php?post_id=$postId");
                 exit();
             }    
         }
@@ -181,10 +187,10 @@
                 </div>
             </div>
             <!-- 日付 
-            <div class="postDate col">
-            -->   
             <span class="col-6"></span>
             <div class="postDate col-6">
+            -->   
+            <div class="postDate col">
             
                 ',$postDate,'
             </div>     
