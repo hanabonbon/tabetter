@@ -360,8 +360,8 @@ if(!empty($_GET['key'])){
             </div>
 
             <div class="row">
-                <div class="col-10"></div>
-                <div class="col-2 mt-2">
+                <div class="col-9"></div>
+                <div class="col-3 mt-2">
                 <input type="submit" value="送信" class="buttonsubmit">
                 </div>
             </div>
